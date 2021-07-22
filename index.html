@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Police Control Board</title>
+        <style>
+            body {
+                background-color: #000;
+            }
+
+            button {
+          	    font-family: Arial Black;
+                  margin-right: 3px ;
+            }
+
+            button:active {
+                box-shadow: inset 0px 0px 15px #444;
+                width: 70px;
+                height: 70px;
+                margin: 2.5px;
+                margin-right: 5.5px;
+                margin-bottom: 2px;
+                font-size: 14px;   
+                border-radius: 4.5px;
+            }
+
+            .siren-off {
+                background-color: #530;
+                border: 0px;
+                border-radius: 5px;
+                color: #000;
+                width: 75px;
+                height: 75px;
+                box-shadow: inset 0px 0px 25px #444;
+                font-size: 15px;
+                color: #999;
+                text-shadow: 0px 0px 3px #000;
+            }
+          
+            .siren-on {
+                background-color: #fa0;
+                border: 0px;
+                border-radius: 5px;
+                color: #000;
+                width: 75px;
+                height: 75px;
+                box-shadow: inset 0px 0px 25px #444;
+                font-size: 15px;
+                color: #fff;
+                text-shadow: 0px 0px 3px #fff;
+            }
+
+            .row {
+                padding-bottom: 8px;
+            }
+
+        </style>
+        <script>
+            function wail() {
+                document.getElementById("wailAudio").play();
+                document.getElementById("wailAudio").loop =true;
+                document.getElementById("hyperyelpAudio").pause();
+                document.getElementById("hyperyelpAudio").currentTime = 0;
+                document.getElementById("yelpAudio").pause();
+                document.getElementById("yelpAudio").currentTime = 0;
+                var element = document.getElementById("wail");
+                element.classList.add("siren-on");
+                element.classList.remove("siren-off");
+                var element = document.getElementById("yelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+                var element = document.getElementById("hyperyelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+            };
+
+            function yelp() {
+                document.getElementById("yelpAudio").play();
+                document.getElementById("yelpAudio").loop =true;
+                document.getElementById("wailAudio").pause();
+                document.getElementById("wailAudio").currentTime = 0;
+                document.getElementById("hyperyelpAudio").pause();
+                document.getElementById("hyperyelpAudio").currentTime = 0;
+                var element = document.getElementById("yelp");
+                element.classList.add("siren-on");
+                element.classList.remove("siren-off");
+                var element = document.getElementById("wail");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+                var element = document.getElementById("hyperyelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+            };
+            function hyperyelp() {
+                document.getElementById("hyperyelpAudio").play();
+                document.getElementById("hyperyelpAudio").loop =true;
+                document.getElementById("yelpAudio").pause();
+                document.getElementById("yelpAudio").currentTime = 0;
+                document.getElementById("wailAudio").pause();
+                document.getElementById("wailAudio").currentTime = 0;
+                var element = document.getElementById("hyperyelp");
+                element.classList.add("siren-on");
+                element.classList.remove("siren-off");
+                var element = document.getElementById("wail");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+                var element = document.getElementById("yelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+            };
+            function spop() {
+                document.getElementById("yelpAudio").pause();
+                document.getElementById("yelpAudio").currentTime = 0;
+                document.getElementById("wailAudio").pause();
+                document.getElementById("wailAudio").currentTime = 0;
+                document.getElementById("hyperyelpAudio").pause();
+                document.getElementById("hyperyelpAudio").currentTime = 0;
+                var element = document.getElementById("hyperyelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+                var element = document.getElementById("wail");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+                var element = document.getElementById("yelp");
+                element.classList.add("siren-off");
+                element.classList.remove("siren-on");
+            };
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <button id="wail" onclick="wail()" class="siren-off">WAIL</button>
+            <button id="yelp" onclick="yelp()" class="siren-off">YELP</button>
+            <button id="hyperyelp" onclick="hyperyelp()" class="siren-off">HYPER</button>
+        </div>
+        <div class="row">
+            <button id="stop" onclick="spop()" class="siren-off">STOP</button>
+        </div>
+        <div class="row">
+            <audio src="wail.wav" id="wailAudio"></audio>
+            <audio src="yelp.wav" id="yelpAudio"></audio>
+            <audio src="hyperyelp.wav" id="hyperyelpAudio"></audio>
+        </div>
+    </body>
+</html>
